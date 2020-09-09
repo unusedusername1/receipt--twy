@@ -1,6 +1,6 @@
 //ReceiptPrinter.java
 
-/* This is a java file 'stub' or piece of a file designed to get you started on 
+/* This is a java file 'stub' or piece of a file designed to get you started on      
 * learning to code in java, while at the same time, exploring a little more about
 * collaboration, version control and multiple file scenarios.
 *
