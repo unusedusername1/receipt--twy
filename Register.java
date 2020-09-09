@@ -35,6 +35,9 @@ public static void main (String[] args) {
     //main menu system
     // how will you call upon or implement other classes?
     
+
+
+	System.out.println("****************************************\n* 		welcome 	       *\n* 				       *\n* 		to shop		       *\n* 				       *\n****************************************");
     }  //close main method
 
 }  // close the class
