@@ -21,7 +21,7 @@
 *             ii.  user login, store number
 *             iii. seasonal or promotional message that could change from time to time.
 *
-* That's a good start.
+* That's a good start. 
 */
 
 public class Register {
