@@ -32,12 +32,17 @@ public class Register {
 
 public static void main (String[] args) {
 
-    //main menu system
-    // how will you call upon or implement other classes?
-    
+	//main menu system
+	// how will you call upon or implement other classes?
 
-
-	System.out.println("****************************************\n* 		welcome 	       *\n* 				       *\n* 		to shop		       *\n* 				       *\n****************************************");
-    }  //close main method
+	Transaction t1 = new Transaction();
+	Printer p1 = new Printer();
+	
+	t1.greet();
+	t1.purchase();
+	p1.print("e");
+	
+	}  //close main method
 
 }  // close the class
+
