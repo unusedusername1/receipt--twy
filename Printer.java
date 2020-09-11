@@ -20,3 +20,20 @@
 * Have fun with the assignment!!       *
 ****************************************
 */
+
+public class Printer {
+
+public void print(String txt){
+
+
+
+}
+
+public void line(){
+
+	System.out.println("****************************************");
+
+}
+
+
+}
