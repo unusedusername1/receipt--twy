@@ -1,48 +1,77 @@
-/* This is a java file 'stub' or piece of a file designed to get you started on 
-* learning to code in java, while at the same time, exploring a little more about
-* collaboration, version control and multiple file scenarios.
-*
-*For this assignment, I would like you to fork, modify and commit this file, while
-* adding the following elements to your code.
-* 
-*   1. Leave this comment header block in place, but replace elements of name, date and
-*         project name with your own (remmber you cannot change file or class name.
-*   2. Imagine the following scenario and design your software to complete the following:
-*        a. Using the concole window (AKA terminal screen) design a POS (Point of Sale System) printer
-*        b. You are to generate a printed receipt for a Point of sale system, that includes:
-*             i.   Line separation headers   i.e. *********************************'
-*             ii.  ASCII simple art for a box around name of Store, location, date of transaction
-*             iii. line for cashier user account logged in
-*             iv.  transaction details for at least three items purchases in POS recent memory
-*             v.   lines for subtotals, tax, and total amound due as well as tender type and 
-*             vi.  where necessary, change due or a mock credit card number (last 4 digits and expiry date
-*       c. Menu system for your POS (Point of Sale) operation could include more static elements like:
-*             i.   Variation of tax amount
-*             ii.  user login, store number
-*             iii. seasonal or promotional message that could change from time to time.
-*
-* That's a good start.
+
+import java.util.Scanner;
+/* Kevin xiao september 2020
 */
 
 public class Register {
 
-//this could be the interactions for the user, that may include login, custom message, etc.
+//tThis could be the interactions for the user, that may include login, custom message, etc.
 // a menu system may call upon the transaction 'window' or screen
 // then you could call up a receipt printer function.
 
 public static void main (String[] args) {
+   
+   
+   Scanner s = new Scanner(System.in);
+   int[] stock = new int[4]; // 0 = coffee, 1 = donut, 2 = croissant, 3 = icetea; 100 each in stock
+   for(int i = 0; i < stock.length; i++)stock[i] = 100;
+   double earnings = 0; 
+   
+   //loop so that you dont need to run program every time u use it. there is option to quit
+   while(true){
+      System.out.print("r(register), q(quit), i(inventory): ");
+      String response = s.nextLine();
+      if(response.equals("r")){
+         double[] fetch = reg();
+         for(int i = 0; i<4; i++){
+            stock[i] -= fetch[i];
+         }
+         earnings += fetch[4];
+      }
+      else if(response.equals("q")) break;
+      else if(response.equals("i")){         
+      }
+      
+      
+   }	
+}  //close main method
 
-	//main menu system
-	// how will you call upon or implement other classes?
 
-	Transaction t1 = new Transaction();
+//register function--------
+public static double[] reg (){
+      
+	Transaction t1 = new Transaction();//reference other classes
 	Printer p1 = new Printer();
 	
 	t1.greet();
-	t1.purchase();
-	p1.print("e");
-	
-	}  //close main method
+   int[] purch = t1.purchase();//takes customer input as arrays, 
+   
+   p1.line();
+   p1.print("                 _     _   ");
+   p1.print(" ___ ___ ___ ___|_|___| |_ ");
+   p1.print("|  _| -_|  _| -_| | . |  _|");
+   p1.print("|_| |___|___|___|_|  _|_|  ");
+   p1.print("                  |_|      ");
+   
+   int i1 = 0;//receipt
+   if(purch[i1] != 0) p1.print(purch[i1] + " coffee(s): " + "$" + 4.00*purch[i1]); i1++;//iterate to next set of values in array
+   if(purch[i1] != 0) p1.print(purch[i1] + " donut(s): " + "$" + 5.00*purch[i1]); i1++;
+   if(purch[i1] != 0) p1.print(purch[i1] + " croissant(s): " + "$" + 9.00*purch[i1]); i1++;
+   if(purch[i1] != 0) p1.print(purch[i1] + " icetea(s): " + "$" + 2.00*purch[i1]);
+   p1.print("---------------------");
+   double cost = Math.round(100*(4.00*purch[0]+5.00*purch[1]+9.00*purch[2]+2.00*purch[3]))/100.0;
+   p1.print("sub-total: $" + cost);
+   p1.print("total (with 12% VAT): $" + Math.round(1.12*cost*100)/100.0); 
+   p1.print("");
+   p1.line();
+   System.out.println("\n");
+   double[] rt = new double[5];//1st four are the fooditems, and the last one is the cash earned
+   for(int i = 0; i<4; i++){
+   rt[i] = purch[i];
+   }
+   rt[4] = cost;
+   return rt;
+}
+//----- end of reg funct ---
 
 }  // close the class
-
