@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 /* Kevin xiao september 2020
 */
@@ -13,6 +12,7 @@ public static void main (String[] args) {
    
    
    Scanner s = new Scanner(System.in);
+   
    int[] stock = new int[4]; // 0 = coffee, 1 = donut, 2 = croissant, 3 = icetea; 100 each in stock
    for(int i = 0; i < stock.length; i++)stock[i] = 100;
    double earnings = 0; 
@@ -29,7 +29,7 @@ public static void main (String[] args) {
          earnings += fetch[4];
       }
       else if(response.equals("q")) break;
-      else if(response.equals("i")){         
+      else if(response.equals("i")){inv(stock, earnings);       
       }
       
       
@@ -48,7 +48,7 @@ public static double[] reg (){
    
    p1.line();
    p1.print("                 _     _   ");
-   p1.print(" ___ ___ ___ ___|_|___| |_ ");
+	p1.print(" ___ ___ ___ ___|_|___| |_ ");
    p1.print("|  _| -_|  _| -_| | . |  _|");
    p1.print("|_| |___|___|___|_|  _|_|  ");
    p1.print("                  |_|      ");
@@ -70,8 +70,22 @@ public static double[] reg (){
    rt[i] = purch[i];
    }
    rt[4] = cost;
-   return rt;
+   return rt;//returns as rt
 }
 //----- end of reg funct ---
+
+public static void inv(int[] stock, double rev){
+   Printer p2 = new Printer();
+   p2.line();
+   p2.print("");
+   p2.print("inventory: ");
+   String[] def = new String[]{"coffee", "donut", "croissant", "icetea"};
+   for(int i = 0; i < stock.length; i++){
+      p2.print(stock[i] + def[i] + "s left");
+   }
+   p2.print("$" + rev + " earned");
+   p2.print("");
+   p2.line();
+}
 
 }  // close the class
